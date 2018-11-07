@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 
-//Comment
+//Change
 
 /**
  * The program reads numbers from a file and prints the sum of them
