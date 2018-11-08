@@ -1,8 +1,6 @@
 #include <iostream>
 #include <fstream>
 
-//Change
-
 /**
  * The program reads numbers from a file and prints the sum of them
  * Example: main.exe ./tests/input.in
@@ -12,48 +10,23 @@
  */
 int main(int argc, const char * argv[])
 {
-    int size = 1;
-    int *numbersPtr = new int[size];
-    int count = 0;
+    
+    int a = 0;
     int sum = 0;
-    double average = 0;
-    std::ifstream inputFile;
-
-    inputFile.open(argv[1]);
-
-    if(!inputFile)      //Checks if read in successfully
-        std::cout << "Error opening file." << std::endl;
-    else
+    
+    std::ifstream myReadFile;
+    
+    myReadFile.open(argv[1]);
+    
+    while (myReadFile >> a)
     {
-        while(inputFile >> numbersPtr[count])           //Read in and store
-        {
-            count++;
-            if(count >= size)       //If full: expand
-            {
-                int *tempPtr = new int[count + 1];  //Create new, bigger
-                for(int i = 0; i < count; i++)      //move
-                    tempPtr[i] = numbersPtr[i];
-                delete []numbersPtr;                //delete old content
-                numbersPtr = tempPtr;               //make pointer point to new array
-            }
-        }
-
-        //Sum elements in array
-        for(int i = 0; i < count; i++)
-        {
-            sum += numbersPtr[i];
-        }
-
-        //Average
-        average = static_cast<double>(sum) / count;
-
-        //Print above average
-        for(int i = 0; i < count; i++)
-        {
-            if(numbersPtr[i] > average)
-                std::cout << numbersPtr[i] << " ";
-        }
+        sum += a;
     }
+    myReadFile.close();
+    
+    
+    
+    std::cout << sum << "\n";
+    
     return 0;
 }
-
