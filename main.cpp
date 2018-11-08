@@ -12,28 +12,35 @@
  */
 int main(int argc, const char * argv[])
 {
-    for(int i = 0; i < argc; i++)
+    int size = 1;
+    int *numbersPtr = new int[size];
+    int count = 0;
+    std::ifstream inputFile;
+
+    inputFile.open(argv[1]);
+
+    if(!inputFile)
+        std::cout << "Error opening file." << std::endl;
+    else
     {
-        std::cout << argv[i] << std::endl;
+        while(inputFile >> numbersPtr[count])
+        {
+            count++;
+            if(count >= size)
+            {
+                int *tempPtr = new int[count + 1];
+                for(int i = 0; i < count; i++)
+                    tempPtr[i] = numbersPtr[i];
+                delete []numbersPtr;
+                numbersPtr = tempPtr;
+            }
+        }
+
+        for(int i = 0; i < count; i++)
+        {
+            std::cout << numbersPtr[i] << std::endl;
+        }
     }
-    
-    int a = 0;
-    int sum = 0;
-    
-    std::ifstream myReadFile;
-    
-    myReadFile.open(argv[1]);
-    
-    while (myReadFile >> a)
-    {
-        sum += a;
-    }
-    myReadFile.close();
-    
-    
-    
-    std::cout << sum << "\n";
-    
     return 0;
 }
 
