@@ -21,18 +21,23 @@ int main(int argc, const char * argv[])
     inputFile.open(argv[1]);
 
     //Read in to dynamically allocated array
-    while(inputFile >> numPtr[count] && count < SIZE)
+    if(!inputFile)
+        std::cout << "Error opening data file" << std::endl;
+    else
     {
-        count++;
-    }
+        while(inputFile >> numPtr[count] && count < SIZE)
+        {
+            count++;
+        }
 
-    //Print array
-    for(int i = 0; i < SIZE; i++)
-    {
-        std::cout << numPtr[i] << std::endl;
-    }
+        //Print array
+        for(int i = 0; i < SIZE; i++)
+        {
+            std::cout << numPtr[i] << std::endl;
+        }
 
-    inputFile.close();
+        inputFile.close();
+    }
 
     return 0;
 }
