@@ -33,6 +33,8 @@ int main(int argc, const char * argv[])
             }
         }
 
+        inputFile.close();
+
         //Sum elements in array
         for(int i = 0; i < count; i++)
         {
