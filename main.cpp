@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 
 /**
  * The program reads numbers from a file and prints the sum of them
@@ -27,6 +28,8 @@ int main(int argc, const char * argv[])
     inputFile.close();
 
     average = static_cast<double>(sum) / count;
+
+    std::cout << std::fixed << std::showpoint << std::setprecision(3);
 
     std::cout << "Sum: " << sum << std::endl;
     std::cout << "Elements: " << count << std::endl;
