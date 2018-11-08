@@ -11,7 +11,7 @@
  */
 int main(int argc, const char * argv[])
 {
-    const int SIZE = 3;
+    const int SIZE = 1;
     int *numPtr = new int[SIZE];
     int sum = 0;
     int count = 0;
@@ -22,21 +22,31 @@ int main(int argc, const char * argv[])
 
     //Read in to dynamically allocated array
     if(!inputFile)
-        std::cout << "Error opening data file" << std::endl;
+       std::cout << "Error opening data file" << std::endl;
     else
     {
-        while(inputFile >> numPtr[count] && count < SIZE)
+        while(inputFile >> numPtr[count])
         {
             count++;
-        }
-
-        //Print array
-        for(int i = 0; i < SIZE; i++)
-        {
-            std::cout << numPtr[i] << std::endl;
+            if(count >= SIZE)
+            {
+                int *tempPtr = new int[count + 1];
+                for(int i = 0; i < count + 1; i++)
+                {
+                    tempPtr[i] = numPtr[i];
+                }
+                delete [] numPtr;
+                numPtr = tempPtr;
+            }
         }
 
         inputFile.close();
+
+        //Print array
+        for(int i = 0; i < count; i++)
+        {
+            std::cout << numPtr[i] << std::endl;
+        }
     }
 
     return 0;
