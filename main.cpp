@@ -11,7 +11,8 @@
  */
 int main(int argc, const char * argv[])
 {
-    int num = 0;
+    const int SIZE = 3;
+    int *numPtr = new int[SIZE];
     int sum = 0;
     int count = 0;
     double average = 0;
@@ -19,22 +20,19 @@ int main(int argc, const char * argv[])
 
     inputFile.open(argv[1]);
 
-    while(inputFile >> num)
+    //Read in to dynamically allocated array
+    while(inputFile >> numPtr[count] && count < SIZE)
     {
-        sum += num;
-        count++;   
+        count++;
+    }
+
+    //Print array
+    for(int i = 0; i < SIZE; i++)
+    {
+        std::cout << numPtr[i] << std::endl;
     }
 
     inputFile.close();
-
-    average = static_cast<double>(sum) / count;
-
-    std::cout << std::fixed << std::showpoint << std::setprecision(3);
-
-    std::cout << "Sum: " << sum << std::endl;
-    std::cout << "Elements: " << count << std::endl;
-    std::cout << "Average: " << average << std::endl;
-
 
 //Andreas code.
 /*
