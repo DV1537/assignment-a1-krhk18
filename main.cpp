@@ -8,15 +8,40 @@
  * @param  argv [description]
  * @return      [description]
  */
-int main(int argc, const char * argv[])     //argc = number of files, argv[] file sent to the program
+int main(int argc, const char * argv[])
 {
-    //Added by help from Andreas. Prints the path to the file sent to the program????
+    int num = 0;
+    int sum = 0;
+    int count = 0;
+    double average = 0;
+    std::ifstream inputFile;
+
+    inputFile.open(argv[1]);
+
+    while(inputFile >> num)
+    {
+        sum += num;
+        count++;   
+    }
+
+    inputFile.close();
+
+    average = static_cast<double>(sum) / count;
+
+    std::cout << "Sum: " << sum << std::endl;
+    std::cout << "Elements: " << count << std::endl;
+    std::cout << "Average: " << average << std::endl;
+
+
+//Andreas code.
+/*
     for(int i = 0; i < argc; i++)
     {
         std::cout << argv[i] << std::endl;
     }
+*/
 
-//Code to read in and sum the numbers in the file. - Entered by Eriks.
+//Eriks code.
 /*
     int a = 0;
     int sum = 0;
