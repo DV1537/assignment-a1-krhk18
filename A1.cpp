@@ -25,8 +25,9 @@ int main(int argc, const char * argv[])
             count++;
             if(count >= size)       //If full: expand
             {
-                int *tempPtr = new int[count + 1];  //Create new, bigger
-                for(int i = 0; i < count; i++)      //move
+                size = size + 1;
+                int *tempPtr = new int[size];  //Create new, bigger
+                for(int i = 0; i < size - 1; i++)      //move
                     tempPtr[i] = numbersPtr[i];
                 delete []numbersPtr;                //delete old content
                 numbersPtr = tempPtr;               //make pointer point to new array
