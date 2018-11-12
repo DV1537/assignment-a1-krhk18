@@ -50,6 +50,9 @@ int main(int argc, const char * argv[])
             if(numbersPtr[i] > average)
                 std::cout << numbersPtr[i] << " ";
         }
+
+        delete []numbersPtr;
+        numbersPtr = nullptr;
     }
     return 0;
 }
