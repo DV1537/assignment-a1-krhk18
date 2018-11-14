@@ -22,14 +22,16 @@ int main(int argc, const char * argv[])
     else
     {
         while(inputFile >> numbersPtr[count])           //Read in and store
-        {
+        {           
             count++;
             if(count >= size)       //If full: expand
             {
-                size = size + 1;
+                size += 1;
                 double *tempPtr = new double[size];  //Create new, bigger
                 for(int i = 0; i < size - 1; i++)      //move
+                {
                     tempPtr[i] = numbersPtr[i];
+                }
                 delete []numbersPtr;                //delete old content
                 numbersPtr = tempPtr;               //make pointer point to new array
             }
