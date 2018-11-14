@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cmath>
 
 /*
  * The program reads numbers from a file an prints the ones above average
@@ -8,9 +9,9 @@
 int main(int argc, const char * argv[])
 {
     int size = 1;
-    int *numbersPtr = new int[size];
+    double *numbersPtr = new double[size];
     int count = 0;
-    int sum = 0;
+    double sum = 0;
     double average = 0;
     std::ifstream inputFile;
 
@@ -26,7 +27,7 @@ int main(int argc, const char * argv[])
             if(count >= size)       //If full: expand
             {
                 size = size + 1;
-                int *tempPtr = new int[size];  //Create new, bigger
+                double *tempPtr = new double[size];  //Create new, bigger
                 for(int i = 0; i < size - 1; i++)      //move
                     tempPtr[i] = numbersPtr[i];
                 delete []numbersPtr;                //delete old content
@@ -43,13 +44,16 @@ int main(int argc, const char * argv[])
         }
 
         //Average
-        average = static_cast<double>(sum) / count;
+        average = sum / count;
 
         //Print above average
         for(int i = 0; i < count; i++)
         {
             if(numbersPtr[i] > average)
+            {
+                numbersPtr[i] = round(numbersPtr[i] * 1000) / 1000;     //Three decimal digits
                 std::cout << numbersPtr[i] << " ";
+            }
         }
 
         delete []numbersPtr;
