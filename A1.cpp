@@ -8,6 +8,7 @@
  */
 int main(int argc, const char * argv[])
 {
+    double test = 0.0;
     int size = 1;
     double *numbersPtr = new double[size];
     int count = 0;
@@ -18,7 +19,9 @@ int main(int argc, const char * argv[])
     inputFile.open(argv[1]);
 
     if(!inputFile)      //Checks if read in successfully
-        std::cout << "Error opening file." << std::endl;
+    {
+        std::cout << "Error opening file.\n" << std::endl;
+    }
     else
     {
         while(inputFile >> numbersPtr[count])           //Read in and store
@@ -34,13 +37,12 @@ int main(int argc, const char * argv[])
                 }
                 delete []numbersPtr;                //delete old content
                 numbersPtr = tempPtr;               //make pointer point to new array
+                tempPtr = nullptr;
             }
         }
-
-        inputFile.close();
-
+        
         //Sum elements in array
-        for(int i = 0; i < count; i++)
+        for(int i = 0; i < size; i++)
         {
             sum += numbersPtr[i];
         }
@@ -49,7 +51,7 @@ int main(int argc, const char * argv[])
         average = sum / count;
 
         //Print above average
-        for(int i = 0; i < count; i++)
+        for(int i = 0; i < size; i++)
         {
             if(numbersPtr[i] > average)
             {
@@ -63,4 +65,3 @@ int main(int argc, const char * argv[])
     }
     return 0;
 }
-
