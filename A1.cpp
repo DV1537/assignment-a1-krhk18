@@ -40,28 +40,35 @@ int main(int argc, const char * argv[])
                 tempPtr = nullptr;
             }
         }
-        
-        //Sum elements in array
-        for(int i = 0; i < size; i++)
+        if(count == 0 || !inputFile.eof())
         {
-            sum += numbersPtr[i];
+            std::cout << "File is empty or contains non-numerical values\n";
         }
-
-        //Average
-        average = sum / count;
-
-        //Print above average
-        for(int i = 0; i < size; i++)
-        {
-            if(numbersPtr[i] > average)
+        else
+        {        
+            //Sum elements in array
+            for(int i = 0; i < size; i++)
             {
-                numbersPtr[i] = round(numbersPtr[i] * 1000) / 1000;     //Three decimal digits
-                std::cout << numbersPtr[i] << " ";
+                sum += numbersPtr[i];
+            }
+
+            //Average
+            average = sum / count;
+
+            //Print above average
+            for(int i = 0; i < size; i++)
+            {
+                if(numbersPtr[i] > average)
+                {
+                    numbersPtr[i] = round(numbersPtr[i] * 1000) / 1000;     //Three decimal digits
+                    std::cout << numbersPtr[i] << " ";
+                }
             }
         }
-
-        delete []numbersPtr;
-        numbersPtr = nullptr;
     }
+ 
+    delete []numbersPtr;
+    numbersPtr = nullptr;
+ 
     return 0;
 }
