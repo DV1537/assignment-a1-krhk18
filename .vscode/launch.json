@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/testProg.exe",
-            "args": [],
+            "args": ["J:\\assignment-a1-krhk18\\tests\\oop2.in"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

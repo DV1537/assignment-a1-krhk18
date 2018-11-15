@@ -28,16 +28,4 @@ int main(int argc, const char * argv[])
     std::cout << sum << "\n";
 
     return 0;
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
-
-//Added line;
-
-//One more line;
-=======
-}
->>>>>>> parent of 6bc337a... Update main.cpp
-=======
-}
->>>>>>> parent of 6bc337a... Update main.cpp
